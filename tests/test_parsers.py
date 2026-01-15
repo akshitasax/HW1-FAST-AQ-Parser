@@ -32,6 +32,8 @@ def test_FastaParser():
     Some example of "good" test cases might be handling edge cases, like Fasta
     files that are blank or corrupted in some way. Two example Fasta files are
     provided in /tests/bad.fa and /tests/empty.fa
+
+    Adding a comment to trigger a build
     """
     fasta_object = FastaParser("data/test.fa") #create instance of FastaParser
     first_record = next(iter(fasta_object)) #iterating over the FastaParser object to get the first record
