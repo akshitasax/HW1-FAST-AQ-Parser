@@ -47,7 +47,7 @@ def test_FastaFormat():
     """
     fasta_object = FastaParser("data/test.fq") #create instance of FastaParser
     first_record = next(iter(fasta_object)) #iterating over the FastaParser object to get the first record
-    assert first_record is None
+    assert first_record[0] is None
 
 
 def test_FastqParser():
@@ -67,4 +67,4 @@ def test_FastqFormat():
     """
     fastq_object = FastqParser("data/test.fa") #create instance of FastaParser
     first_record = next(iter(fastq_object)) #iterating over the FastaParser object to get the first record
-    assert first_record is None
+    assert first_record[0] is None
