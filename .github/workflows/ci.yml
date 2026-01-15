@@ -14,9 +14,10 @@ jobs:
         with:
           python-version: 3.9
 
-      # - name: Install 
-      #   run: |
-      #     pip install . 
+      - name: Install pytest
+        run: |
+          pip install pytest 
+          
       - name: Test with pytest
         run: |
           python -m pytest -vv tests/*py
