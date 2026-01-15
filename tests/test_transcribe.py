@@ -25,11 +25,13 @@ def test_transcribe():
     """
     Write your unit test for the transcribe function here.
     """
-    pass
+    transcribed_seq = transcribe("ACTNG")
+    assert transcribed_seq == "UGANC"
 
 
 def test_reverse_transcribe():
     """
     Write your unit test for the reverse transcribe function here.
     """
-    pass
+    rev_transcribed_seq = reverse_transcribe("ACTNG")
+    assert rev_transcribed_seq == "CNAGU"

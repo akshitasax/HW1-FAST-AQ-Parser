@@ -33,15 +33,19 @@ def test_FastaParser():
     files that are blank or corrupted in some way. Two example Fasta files are
     provided in /tests/bad.fa and /tests/empty.fa
     """
-    pass
+    fasta_object = FastaParser("data/test.fa") #create instance of FastaParser
+    first_record = next(iter(fasta_object)) #iterating over the FastaParser object to get the first record
+    assert first_record == ("seq0", "TGATTGAATCTTTTGAGGGTCACGGCCCGGAAGCCAGAATTTCGGGGTCCTCTGTGGATATTAATCGAGCCCACACGGTGTGAGTTCAGCGGCCCCCGCA")
 
 
 def test_FastaFormat():
     """
-    Test to make sure that a fasta file is being read in if a fastq file is
+    Test to make sure that a fasta file is being read in. If a fastq file is
     read, the first item is None
     """
-    pass
+    fasta_object = FastaParser("data/test.fq") #create instance of FastaParser
+    first_record = next(iter(fasta_object)) #iterating over the FastaParser object to get the first record
+    assert first_record is None
 
 
 def test_FastqParser():
@@ -50,11 +54,15 @@ def test_FastqParser():
     an instance of your FastqParser class and assert that it properly reads 
     in the example Fastq File.
     """
-    pass
+    fastq_object = FastqParser("data/test.fq") #create instance of FastaParser
+    first_record = next(iter(fastq_object)) #iterating over the FastaParser object to get the first record
+    assert first_record == ("seq0", "TGTGGTCGTATAGTTATTGTCATAAATTACACAGAATCGCGATTCTCCGCGTCCACCAATCTTAGTGCACCACAGCATCGACCCGATTTATGACGCTGAG", "\*540($=*,=.062565,2>'487')!:&&6=,6,*7>:&132&83*8(58&59>'8!;28<94,0*;*.94**:9+7\"94(>7='(!5\"2/!%\"4#32=")
 
 def test_FastqFormat():
     """
     Test to make sure fastq file is being read in. If this is a fasta file, the
     first line is None
     """
-    pass
+    fastq_object = FastqParser("data/test.fa") #create instance of FastaParser
+    first_record = next(iter(fastq_object)) #iterating over the FastaParser object to get the first record
+    assert first_record is None
