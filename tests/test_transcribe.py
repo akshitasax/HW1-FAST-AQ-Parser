@@ -28,6 +28,13 @@ def test_transcribe():
     transcribed_seq = transcribe("ACTNG")
     assert transcribed_seq == "UGANC"
 
+def test_transcribe_unallowed_chars():
+    """
+    Write your unit test for the transcribe function here.
+    """
+    transcribed_seq = transcribe("A.CNNGT")
+    assert transcribed_seq == "U.GNNCA"
+
 
 def test_reverse_transcribe():
     """
@@ -35,3 +42,11 @@ def test_reverse_transcribe():
     """
     rev_transcribed_seq = reverse_transcribe("ACTNG")
     assert rev_transcribed_seq == "CNAGU"
+
+def test_reverse_transcribe_unallowed_chars():
+    """
+    Write your unit test for the reverse transcribe function here.
+    """
+    rev_transcribed_seq = reverse_transcribe("NGC.NA")
+    assert rev_transcribed_seq == "UN.GCN"
+

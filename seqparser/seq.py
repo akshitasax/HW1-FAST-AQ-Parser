@@ -10,16 +10,30 @@ def transcribe(seq: str, reverse: bool = False) -> str:
     Write a function that will transcribe (replace DNA sequence to RNA
     by replacing all 'T' to 'U') in an input sequence
     """
-    # Initially started by looping over the sequence and replacing each character. 
-    # Then looked up more efficient ways to replace characters in a string according to a mapping, and came across
-    # the translate method for strings.
-    transcription_table = str.maketrans(TRANSCRIPTION_MAPPING)
-    return seq.translate(transcription_table)
+    trans_seq = []
+    for nuc in seq:
+        if nuc in ALLOWED_NUC:
+            trans_seq.append(TRANSCRIPTION_MAPPING[nuc])
+        else:
+            trans_seq.append(nuc)
+    
+    trans_seq_str = "".join(trans_seq)
+    
+    return trans_seq_str
 
 def reverse_transcribe(seq: str) -> str:
     """
     Write a function that will transcribe an input sequence and reverse
     the sequence
     """
-    transcription_table = str.maketrans(TRANSCRIPTION_MAPPING)
-    return seq.translate(transcription_table)[::-1] # string slicing to iterate over a sequence in reverse steps of 1.
+    trans_seq = []
+    for nuc in seq:
+        if nuc in ALLOWED_NUC:
+            trans_seq.append(TRANSCRIPTION_MAPPING[nuc])
+        else:
+            trans_seq.append(nuc)
+    
+    trans_seq_str = "".join(trans_seq)
+    rev_trans_seq_str = trans_seq_str[::-1] #reverse the string by slicing start to end in negative steps
+    
+    return rev_trans_seq_str
