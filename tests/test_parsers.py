@@ -71,14 +71,14 @@ def test_FastqFormat():
 
 def test_bad_Fasta():
     """
-    Test to make sure bad fasta file results in ValueError
+    Test to make sure bad fasta file results in an error
     """
-    with pytest.raises(ValueError): # Used ChatGPT to understand what sort of error this would throw
+    with pytest.raises(ValueError): # Used ChatGPT to understand what sort of error this would throw, and then also manually checked error message on github actions
         list(FastaParser("tests/bad.fa"))
 
 def test_blank_Fasta():
     """
-    Test to make sure blank fasta file is read as None
+    Test to make sure blank fasta file results in an error
     """
-    fasta_object = FastaParser("tests/blank.fa") #create instance of FastaParser
-    assert list(fasta_object) == []
+    with pytest.raises(ValueError): # Used ChatGPT to understand what sort of error this would throw, and then also manually checked error message on github actions
+        list(FastaParser("tests/blank.fa"))
