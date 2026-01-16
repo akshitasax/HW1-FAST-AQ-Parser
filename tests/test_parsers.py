@@ -65,6 +65,20 @@ def test_FastqFormat():
     Test to make sure fastq file is being read in. If this is a fasta file, the
     first line is None
     """
-    fastq_object = FastqParser("data/test.fa") #create instance of FastaParser
-    first_record = next(iter(fastq_object)) #iterating over the FastaParser object to get the first record
-    assert first_record[0] is None
+    fastq_object = FastqParser("data/test.fa") #create instance of FastqParser
+    first_record = next(iter(fastq_object)) #iterating over the FasqParser object to get the first record
+    assert first_record[0] is None #checking if the first line is None
+
+def test_bad_Fasta():
+    """
+    Test to make sure bad fasta file results in ValueError
+    """
+    with pytest.raises(ValueError): # Used ChatGPT to understand what sort of error this would throw
+        list(FastaParser("tests/bad.fa"))
+
+def test_blank_Fasta():
+    """
+    Test to make sure blank fasta file is read as None
+    """
+    fasta_object = FastaParser("tests/blank.fa") #create instance of FastaParser
+    assert list(fasta_object) == []
